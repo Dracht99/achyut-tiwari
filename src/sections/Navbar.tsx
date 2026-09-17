@@ -22,9 +22,16 @@ const Navbar: React.FC<NavbarProps> = ({ items, active, onNavigate }) => {
   return (
     <nav className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-[#071b2b]/95 text-white shadow-lg backdrop-blur-md">
       <div className="mx-auto flex min-h-20 w-full max-w-6xl items-center justify-between px-5 py-3 sm:px-8">
-        <button onClick={() => handleClick("Home")} className="text-left" aria-label="Go to home">
-          <span className="block text-base font-bold tracking-tight sm:text-lg">Bharat Kharpuse</span>
-          <span className="block text-xs text-cyan-300">Nuclear physics researcher</span>
+        <button onClick={() => handleClick("Home")} className="flex items-center gap-3 text-left" aria-label="Go to home">
+          <img
+            src={`${import.meta.env.BASE_URL}profile_picture.png`}
+            alt="Achyut Tiwari"
+            className="h-11 w-11 shrink-0 rounded-full object-cover ring-2 ring-cyan-300/70 sm:h-12 sm:w-12"
+          />
+          <span>
+            <span className="block text-base font-bold tracking-tight sm:text-lg">Achyut Tiwari</span>
+            <span className="block text-xs text-cyan-300">Experimental physicist</span>
+          </span>
         </button>
         <div className="hidden rounded-full border border-white/10 bg-white/5 p-1 md:block">
         <ul className="flex gap-1 text-sm font-medium">

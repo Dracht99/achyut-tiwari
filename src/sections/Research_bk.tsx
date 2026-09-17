@@ -91,7 +91,7 @@ const Research: React.FC = () => {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="flex justify-center">
-              <img src="bharat_vecc.jpg" alt="Image 1" className="rounded-lg shadow transform transition-transform duration-300 hover:scale-105 cursor-pointer max-h-72 object-contain" />
+              <img src="achyut_research_archive.jpg" alt="Image 1" className="rounded-lg shadow transform transition-transform duration-300 hover:scale-105 cursor-pointer max-h-72 object-contain" />
             </div>
             <div className="flex flex-col items-center">
               <img src="69Ge.png" alt="Image 2" className="rounded-lg shadow transform transition-transform duration-300 hover:scale-105 cursor-pointer max-h-72 object-contain" />

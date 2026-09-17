@@ -33,7 +33,7 @@ export default function OverlayAnimation({
   }, [dismissible, visibleMs]);
 
   const name = useMemo(
-    () => ["Bharat", " Kharpuse"].map((part, index) => (
+    () => ["Achyut", " Tiwari"].map((part, index) => (
       <span key={part + index} className={index === 0 ? "text-white" : "text-cyan-300"}>
         {part}
       </span>
@@ -46,14 +46,21 @@ export default function OverlayAnimation({
       {visible && (
         <motion.div
           className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden"
-          style={{
-            background: `radial-gradient(circle at top, ${viaColor} 0%, ${fromColor} 38%, ${toColor} 100%)`,
-          }}
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0, filter: "blur(10px)" }}
-          transition={{ duration: 0.9, ease: "easeInOut" }}
+          style={{ background: `linear-gradient(rgba(7, 27, 43, 0.55), rgba(7, 27, 43, 0.55)), url('${import.meta.env.BASE_URL}pic_lab.JPG') center / cover` }}
+          initial={{ y: 0, opacity: 1 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: "-100%", opacity: 0 }}
+          transition={{ duration: 1, ease: "easeInOut" }}
         >
+          <motion.img
+            src={`${import.meta.env.BASE_URL}pic_lab.JPG`}
+            alt="Achyut Tiwari in the laboratory"
+            className="absolute inset-0 h-full w-full object-cover"
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          />
+          <div className="absolute inset-0 bg-[#071b2b]/55" />
           <motion.div
             aria-hidden="true"
             className="absolute -left-24 top-12 h-80 w-80 rounded-full bg-cyan-400/20 blur-3xl"
@@ -68,28 +75,17 @@ export default function OverlayAnimation({
           />
 
           <div className="relative z-10 flex flex-col items-center text-center">
-            {logoSrc ? (
-              <motion.img
-                src="bharat_imag_1.jpg"
-                alt="bharat portrait"
-                className="mb-6 h-14 w-14 rounded-full border border-white/15 bg-white/5 shadow-[0_0_30px_rgba(34,211,238,0.25)] backdrop-blur-sm"
-                initial={{ opacity: 0, scale: 0.7, rotate: -10 }}
-                animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                transition={{ delay: 0.15, duration: 0.8, ease: "easeOut" }}
-              />
-            ) : null}
-
             <motion.div
               className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.32em] text-cyan-200/90 backdrop-blur-sm"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
-              Research Fellow
+              Experimental Condensed-Matter Physicist
             </motion.div>
 
             <motion.h1
-              className="mb-3 text-4xl font-black tracking-[-0.06em] text-white md:text-6xl"
+              className="relative z-10 mb-3 bg-gradient-to-r from-cyan-200 via-white to-sky-400 bg-clip-text text-4xl font-black tracking-[-0.06em] text-transparent md:text-6xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
@@ -103,7 +99,7 @@ export default function OverlayAnimation({
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.7, ease: "easeOut" }}
             >
-              INFN Torino · FOOT Collaboration
+              1. Physikalisches Institut · Universität Stuttgart
             </motion.p>
 
             <motion.div
@@ -127,7 +123,7 @@ export default function OverlayAnimation({
             animate={{ opacity: 1 }}
             transition={{ delay: 1.1, duration: 0.5 }}
           >
-            Nuclear Physics · Medical Applications
+            Correlated Materials · Optical Spectroscopy · Phase Transitions
           </motion.div>
         </motion.div>
       )}

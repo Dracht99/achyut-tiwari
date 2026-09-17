@@ -8,10 +8,10 @@ import About from "@/sections/About";
 import Research from "@/sections/Research";
 import Publications from "@/sections/Publications";
 import Gallery from "@/sections/Gallery";
-import Contact from "@/sections/Contact";
+import Blog from "@/sections/Blog";
 //import CursorParticles from "@/components/CursorParticles";
 
-const NAV_ITEMS = ["Home", "Research", "Publications", "About", "Gallery", "Contact"] as const;
+const NAV_ITEMS = ["Home", "Research", "Publications", "About", "Gallery", "Blog"] as const;
 type SectionId = (typeof NAV_ITEMS)[number];
 
 const Portfolio: React.FC = () => {
@@ -19,13 +19,14 @@ const Portfolio: React.FC = () => {
 
   const navigateTo = (id: SectionId) => {
     setActive(id);
-    window.history.pushState(null, "", `#${id}`);
+    window.history.pushState(null, "", `#${id === "Blog" ? "blog" : id}`);
   };
 
   useEffect(() => {
-    const hash = window.location.hash.replace("#", "");
-    if (hash && NAV_ITEMS.includes(hash as SectionId)) {
-      setActive(hash as SectionId);
+    const hash = window.location.hash.replace("#", "").toLowerCase();
+    const matchingItem = NAV_ITEMS.find((item) => item.toLowerCase() === hash);
+    if (matchingItem) {
+      setActive(matchingItem);
     }
   }, []);
 
@@ -47,8 +48,9 @@ const Portfolio: React.FC = () => {
 
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.replace("#", "") as SectionId;
-      if (NAV_ITEMS.includes(hash)) setActive(hash);
+      const hash = window.location.hash.replace("#", "").toLowerCase();
+      const matchingItem = NAV_ITEMS.find((item) => item.toLowerCase() === hash);
+      if (matchingItem) setActive(matchingItem);
     };
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
@@ -61,7 +63,7 @@ const Portfolio: React.FC = () => {
         fromColor="#071029"
         viaColor="#0ea5e9"
         toColor="#061021"
-        visibleMs={1200}
+        visibleMs={1600}
         dismissible
       />
       <Navbar
@@ -79,7 +81,7 @@ const Portfolio: React.FC = () => {
             ["Publications", <Publications onNavigate={navigateTo} />],
             ["About", <About onNavigate={navigateTo} />],
             ["Gallery", <Gallery onNavigate={navigateTo} />],
-            ["Contact", <Contact onNavigate={navigateTo} />],
+            ["Blog", <Blog onNavigate={navigateTo} />],
           ].map(([id, content]) => (
             <motion.section
               key={id}

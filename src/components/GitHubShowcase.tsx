@@ -22,7 +22,7 @@ type Props = {
 };
 
 export default function GitHubShowcase({
-  username = "kharpusebharat",
+  username = "achyut-tiwari",
   perPage = 9,
   cacheHours = 6,
   pinned = [],

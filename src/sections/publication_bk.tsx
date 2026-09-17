@@ -5,7 +5,7 @@ import SectionFooter from "@/components/SectionFooter";
 const Publications: React.FC = () => {
   const articles = [
     {
-      authors: "A. Trigilio, L. Sabbatini, A. Alexandrov, B. Alpat, G. Ambrosi, S. Argirò, <strong>Bharat Kharpuse</strong>, ...",
+      authors: "A. Trigilio, L. Sabbatini, A. Alexandrov, B. Alpat, G. Ambrosi, S. Argirò, <strong>Achyut Tiwari</strong>, ...",
       title: "Characterization of a permanent magnetic dipolar system for the FOOT experiment",
       link: "https://iopscience.iop.org/article/10.1088/1748-0221/20/09/T09010",
       journal: "Journal of Instrumentation 20 (09), T09010 (2025)",
@@ -14,7 +14,7 @@ const Publications: React.FC = () => {
 
   const conference = [
     {
-      authors: "<strong>Bharat Kharpuse</strong> and Moumita Maiti",
+      authors: "<strong>Achyut Tiwari</strong> and Moumita Maiti",
       title: "Analysis of residual cross section from 11B-induced reaction on Zr",
       link: "https://inspirehep.net/literature/2877428",
       journal: "DAE Symp. Nucl. Phys. 68 (2025) 399–400",

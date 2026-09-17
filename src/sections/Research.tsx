@@ -3,101 +3,187 @@ import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import SectionFooter from "./SectionFooter";
 
-const projects = [
-  {
-    institution: "INFN Torino · FOOT Collaboration",
-    period: "Current research",
-    title: "Measuring fragmentation for better particle therapy",
-    question: "How do ion beams produce secondary fragments when they interact with tissue-equivalent targets?",
-    contribution: "I work on BGO calorimeter calibration and response characterization, and contribute to differential cross-section analysis.",
-    methods: "BGO calorimetry · detector response · neutron detection · cross-section analysis",
-    outcome: "This work supports more precise treatment planning in hadron therapy and improved radiation-risk models for space missions.",
-    images: [
-      { src: "calo_imag.jpg", alt: "BGO calorimeter setup" },
-      { src: "response_calo.png", alt: "BGO calorimeter response" },
-    ],
-    link: "https://iopscience.iop.org/article/10.1088/1748-0221/20/03/P03021",
-    linkLabel: "Read related detector paper",
-  },
-  {
-    institution: "Vi-Hi Collaboration",
-    period: "Current Collaborative research",
-    title: "Micro-computed tomography for biological tissue",
-    question: "How can phase-contrast X-ray imaging and reconstruction improve three-dimensional tissue studies?",
-    contribution: "I contribute to work combining high-resolution micro-CT, phase contrast, and computational reconstruction methods.",
-    methods: "Micro-CT · phase-contrast X-ray imaging · computational reconstruction",
-    outcome: "The collaboration explores improved imaging workflows for biological samples.",
-    images: [{ src: "Vi-HI_setup.jpg", alt: "Vi-Hi micro-computed tomography setup" }],
-  },
-  {
-    institution: "IIT-Roorkee",
-    period: "2024–2025",
-    title: "Fusion reaction dynamics in 11B + Zr systems",
-    question: "What residual radionuclides are produced in boron-induced reactions on zirconium?",
-    contribution: "I used off-line gamma-ray measurements to determine residual production cross sections and study the reaction dynamics.",
-    methods: "Off-line gamma spectroscopy · reaction cross sections · radionuclide analysis",
-    outcome: "The analysis was presented at the DAE Symposium on Nuclear Physics 68 (2025).",
-    images: [
-      { src: "exp_setup.png", alt: "Fusion experiment setup" },
-      { src: "oral.jpg", alt: "Research presentation at DAE Symposium" },
-    ],
-    link: "https://link.springer.com/article/10.1140/epjp/s13360-025-07171-6",
-    linkLabel: "View Published Article",
-  },
-  {
-    institution: "Visva-Bharati University",
-    period: "2022–2024",
-    title: "Nuclear structure around the A≈70 mass region",
-    question: "What can gamma-ray spectra reveal about the structure and lifetimes of 66Zn and 66Ga?",
-    contribution: "I carried out spectroscopy and lifetime measurements using the INGA detector array.",
-    methods: "INGA HPGe array · gamma-ray spectroscopy · lifetime measurements",
-    outcome: "The work was presented at the DAE Symposium on Nuclear Physics 67 (2024).",
-    images: [
-      { src: "bharat_vecc.jpg", alt: "INGA campaign at VECC" },
-      { src: "69Ge.png", alt: "Nuclear level scheme" },
-    ],
-    link: "https://inspirehep.net/literature/2764532",
-    linkLabel: "View conference paper",
-  },
+type Theme = {
+  title: string;
+  description: string;
+};
 
+type Highlight = {
+  headline: string;
+  summary: string;
+  tags: string[];
+  citation: string;
+  image: string;
+  alt: string;
+  url?: string;
+};
+
+const THEMES: Theme[] = [
+  {
+    title: "Optical spectroscopy of correlated & van der Waals materials",
+    description: "Explore anisotropic charge dynamics, interlayer coupling, and electronic phases.",
+  },
+  {
+    title: "Generalized (Mueller-matrix) ellipsometry",
+    description: "Polarization-resolved opticsto determine dielectric tensors in low-symmetry materials.",
+  },
+  {
+    title: "Phase transitions & emergent order",
+    description: "Tracking changes in charge dynamics, phase coexistence, and electronic structure across metal-insulator and charge-order transitions.",
+  },
+];
+
+const HIGHLIGHTS: Highlight[] = [
+  {
+    headline: "Interlayer dimerization and the insulating state of 1T-TaS₂",
+    summary:
+      "Polarization-resolved infrared spectroscopy, combined with electronic-structure calculations, reveals that the bulk insulating gap in 1T-TaS₂ is controlled by stacking-dependent interlayer dimerization. The results show that interlayer coupling is essential for the insulating ground state, rather than a picture based solely on Mott localization within the charge-density-wave layers.",
+    tags: ["Infrared spectroscopy", "DFT", "van der Waals materials"],
+    citation: "Phys. Rev. Lett. 137, 126501 (2026)",
+    image: `${import.meta.env.BASE_URL}1T-TaS2_Highlight image.png`,
+    alt: "Infrared spectroscopy of interlayer dimerization in 1T-TaS2",
+    url: "https://journals.aps.org/prl/abstract/10.1103/pwzn-m4d2",
+  },
+  {
+    headline: "Anisotropic phase evolution in 1T-TaS₂",
+    summary:
+      "Temperature-dependent ellipsometry combined with anisotropic Bruggeman effective-medium analysis resolves the evolution of metallic and insulating phases across the charge-density-wave transitions of 1T-TaS<sub>2</sub>. The analysis connects the anisotropic dielectric response with changes in metallic volume fraction, domain morphology, and interlayer coupling.",
+    tags: ["Ellipsometry", "Interlayer coupling", "Anisotropic BEMA"],
+    citation: "Appl. Phys. Lett. 128, 063104 (2026)",
+    image: `${import.meta.env.BASE_URL}R3.2.jpg`,
+    alt: "Anisotropic phase evolution in layered 1T-TaS2",
+    url: "https://pubs.aip.org/aip/apl/article-abstract/128/6/063104/3379342/Interlayer-coupling-driven-phase-evolution-in",
+  },
+  {
+    headline: "Dielectric tensors of low-symmetry quantum materials",
+    summary:
+      "Angle- and azimuth-resolved Mueller-matrix ellipsometry enables the temperature-dependent dielectric tensor of triclinic crystals to be determined. This provides a direct way to follow anisotropic charge dynamics and their evolution across metal-insulator and charge-order transitions.",
+    tags: ["Mueller-matrix ellipsometry", "Anisotropic dielectric tensor"],
+    citation: "Appl. Phys. Lett. 125, 133101 (2024)",
+    image: `${import.meta.env.BASE_URL}APL2024.png`,
+    alt: "Mueller-matrix ellipsometry of a low-symmetry crystal",
+    url: "https://pubs.aip.org/aip/apl/article-abstract/125/13/133101/3313692/Temperature-dependent-generalized-ellipsometry-of?redirectedFrom=fulltext",
+  },
+  {
+    headline: "Quantifying phase coexistence across first-order transitions",
+    summary:
+      "Effective-medium analysis of temperature-dependent optical spectra allows the coexistence of metallic and insulating phases to be quantified near first-order transitions. This links changes in the macroscopic dielectric response to the evolution of phase fractions and domain morphology.",
+    tags: ["Effective-medium theory", "Phase coexistence", "First-order transitions"],
+    citation: "Phys. Rev. B 111, 195142 (2025)",
+    image: `${import.meta.env.BASE_URL}Graphical abstract.png`,
+    alt: "Quantitative phase coexistence measured by optical response",
+    url: "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.111.195142",
+  },
+  {
+    headline: "Optical fingerprints of altermagnetism",
+    summary:
+      "I am extending Mueller-matrix ellipsometry toward symmetry-sensitive measurements of magnetic and altermagnetic materials. The aim is to identify symmetry-dependent optical signatures of magnetic order and develop polarization-resolved optical approaches for probing subtle symmetry breaking.",
+    tags: ["Altermagnetism"],
+    citation: "Related work: Phys. Rev. B (Letter) 111, L041115 (2025)",
+    image: `${import.meta.env.BASE_URL}MM_CrSb.png`,
+    alt: "Optical fingerprint of altermagnetism",
+    url: "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.111.L041115",
+  },
 ];
 
 const Research: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavigate }) => (
-  <div className="flex h-full w-full flex-col">
+  <div className="flex h-full w-full flex-col bg-[#f8fafc] text-slate-900">
     <div className="mx-auto w-full max-w-[1200px] flex-1 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-      <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-700">Research portfolio</p>
-        <h2 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">From nuclear reactions to real-world applications.</h2>
-        <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">My work combines nuclear physics, detector development, and quantitative analysis to understand processes that matter in medicine, biology, and space science.</p>
+      <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-[680px]">
+        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-600">Research</p>
+        <p className="mt-5 text-lg leading-8 text-slate-700">
+          I study the optical response of correlated and layered quantum materials, with a particular focus on anisotropy, interlayer coupling, and electronic phase transitions. Using Mueller-matrix ellipsometry and broadband infrared spectroscopy at low temperatures, I investigate how charge dynamics and the dielectric response evolve across metal-insulator and charge-order transitions.
+        </p>
       </motion.div>
 
-      <div className="mt-10 grid grid-cols-2 border-y border-slate-300 sm:grid-cols-4">
-        {["Medical physics", "Detector systems", "Nuclear reactions", "Gamma spectroscopy"].map((theme) => <div key={theme} className="border-slate-300 px-3 py-5 text-center text-sm font-semibold text-slate-700 first:border-r sm:border-r sm:last:border-r-0">{theme}</div>)}
+      <div className="mt-12 grid gap-5 md:grid-cols-3">
+        {THEMES.map((theme, index) => (
+          <motion.div
+            key={theme.title}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.45, delay: index * 0.05 }}
+            className="rounded-xl border border-slate-200 bg-white p-6 shadow-[0_10px_30px_rgba(15,23,42,0.04)]"
+          >
+            <div className="h-px w-12 bg-cyan-500" />
+            <h3 className="mt-4 text-base font-semibold leading-6 text-slate-900">{theme.title}</h3>
+            <p className="mt-3 text-sm leading-6 text-slate-600">{theme.description}</p>
+          </motion.div>
+        ))}
       </div>
 
-      <div className="mt-14 space-y-14">
-        {projects.map((project, index) => (
-          <motion.article key={project.title} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.45 }} className="border-t-2 border-slate-300 pt-7">
-            <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.12em] text-cyan-700">{project.institution}</p>
-                <p className="mt-2 text-sm text-slate-500">{project.period}</p>
-                <h3 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">{project.title}</h3>
-                {project.link && <a href={project.link} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-cyan-700 hover:text-cyan-900">{project.linkLabel} <ExternalLink size={15} /></a>}
-              </div>
-              <div className="grid gap-6 text-sm leading-6 text-slate-600 sm:grid-cols-2">
-                <div><p className="font-semibold text-slate-900">The question</p><p className="mt-1">{project.question}</p></div>
-                <div><p className="font-semibold text-slate-900">My contribution</p><p className="mt-1">{project.contribution}</p></div>
-                <div><p className="font-semibold text-slate-900">Methods</p><p className="mt-1">{project.methods}</p></div>
-                <div><p className="font-semibold text-slate-900">Outcome</p><p className="mt-1">{project.outcome}</p></div>
-              </div>
-            </div>
-            <div className={`mt-8 grid gap-4 ${project.images.length > 1 ? "sm:grid-cols-2" : "sm:max-w-md"}`}>
-              {project.images.map((image) => <figure key={image.src} className="overflow-hidden border border-slate-300 bg-white/40"><img src={image.src} alt={image.alt} className="h-56 w-full object-cover transition-transform duration-500 hover:scale-105" /></figure>)}
-            </div>
-            {index === 0 && <p className="mt-5 text-xs font-semibold uppercase tracking-[0.14em] text-emerald-700">Featured current project</p>}
-          </motion.article>
-        ))}
+      <div className="mt-20">
+        <motion.h3
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-2xl font-semibold tracking-tight text-slate-900"
+        >
+          Selected highlights
+        </motion.h3>
+
+        <div className="mt-10 space-y-16">
+          {HIGHLIGHTS.map((highlight, index) => {
+            const isImageOnRight = index % 2 === 1;
+            return (
+              <motion.article
+                key={highlight.headline}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.45, delay: index * 0.05 }}
+                className="grid gap-10 md:grid-cols-2 md:items-center"
+              >
+                <div className={`${isImageOnRight ? "md:order-2" : "md:order-1"}`}>
+                  <img
+                    src={highlight.image}
+                    alt={highlight.alt}
+                    className="aspect-[16/9] w-full rounded-xl border border-slate-200 bg-slate-100 object-cover shadow-[0_18px_40px_rgba(15,23,42,0.08)]"
+                  />
+                </div>
+
+                <div className={`${isImageOnRight ? "md:order-1" : "md:order-2"}`}>
+                  <h4 className="text-2xl font-semibold tracking-tight text-slate-900">{highlight.headline}</h4>
+                  <p className="mt-4 max-w-prose text-base leading-7 text-slate-600">{highlight.summary}</p>
+
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {highlight.tags.map((tag) => (
+                      <span key={tag} className="rounded bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-500">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <a
+                    href={highlight.url || "#"}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-cyan-600 hover:underline"
+                  >
+                    <span>{highlight.citation}</span>
+                    <ExternalLink size={14} />
+                    {highlight.url && highlight.url !== "#" ? "" : ""}
+                  </a>
+                </div>
+              </motion.article>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="mt-20 flex flex-col items-start justify-between gap-4 border-t border-slate-200 pt-8 sm:flex-row sm:items-center">
+        <a href="#Publications" onClick={() => onNavigate?.("Publications")} className="inline-flex items-center gap-2 text-base font-medium text-slate-700 hover:text-cyan-600">
+          See all publications <span aria-hidden="true">→</span>
+        </a>
+        <a
+          href={`${import.meta.env.BASE_URL}cv.pdf`}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center justify-center rounded-lg bg-cyan-400 px-4 py-2.5 text-sm font-semibold text-slate-950 shadow-[0_0_20px_rgba(34,211,238,0.22)] transition-colors hover:bg-cyan-300"
+        >
+          Download CV
+        </a>
       </div>
     </div>
     <SectionFooter sectionId="Research" onNavigate={onNavigate} />

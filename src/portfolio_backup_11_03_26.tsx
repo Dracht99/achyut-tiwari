@@ -35,7 +35,7 @@ export default function Portfolio() {
       <nav className="fixed top-0 left-0 w-full backdrop-blur bg-gray-100 z-50 shadow-sm">
         <div className="max-w-5xl mx-auto flex items-center justify-between p-4">
           <div>
-            <span className="text-xl font-bold text-black block leading-tight">Bharat Kharpuse</span>
+            <span className="text-xl font-bold text-black block leading-tight">Achyut Tiwari</span>
             <span className="text-sm text-slate-700">Research Fellow</span>
           </div>
           <ul className="flex gap-6 text-sm font-medium">
@@ -63,15 +63,15 @@ export default function Portfolio() {
   >
     {/* Profile Image */}
     <img
-      src="bharat_imag.jpg"
-      alt="Bharat Kharpuse"
+      src="pic_lab.JPG"
+      alt="Achyut Tiwari"
       className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover shadow-lg"
     />
 
     {/* Text + Buttons */}
     <div className="flex flex-col items-center md:items-start">
       <h1 className="text-4xl md:text-6xl font-extrabold uppercase">
-        Bharat Kharpuse
+        Achyut Tiwari
       </h1>
       <p className="mt-2 text-sm md:text-base text-gray-300 font-light max-w-md">
         Research Fellow, <strong>FOOT-Collaboration</strong>, INFN-Torino, Italy – 10125
@@ -86,7 +86,7 @@ export default function Portfolio() {
       >
         <Button asChild className="px-6 py-3 text-lg  bg-black text-white hover:bg-gray-800" >
           <a
-            href="Bharat_CVU.pdf"
+            href="Achyut_Tiwari_CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -107,7 +107,7 @@ export default function Portfolio() {
   </motion.div>
 </section>
 
-<GitHubShowcase username="kharpusebharat" perPage={9} pinned={["bharat"]} />
+<GitHubShowcase username="achyut-tiwari" perPage={9} pinned={["research"]} />
 
 {/* About Section */}
 <section id="About" className="py-24 bg-white w-full">
@@ -120,8 +120,8 @@ export default function Portfolio() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.6 }}
-        src="bharat_imag.jpg"
-        alt="Bharat portrait"
+        src="pic_lab.JPG"
+        alt="Achyut portrait"
         className="w-48 h-48 rounded-full object-cover shadow-lg"
       />
       <motion.div
@@ -339,7 +339,7 @@ export default function Portfolio() {
         </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="flex justify-center">
-          <img src="bharat_vecc.jpg" alt="Image 1" className="rounded-lg shadow transform transition-transform duration-300 hover:scale-105 cursor-pointer max-h-72 object-contain" />
+          <img src="achyut_research_archive.jpg" alt="Image 1" className="rounded-lg shadow transform transition-transform duration-300 hover:scale-105 cursor-pointer max-h-72 object-contain" />
         </div>
         <div className="flex flex-col items-center">
           <img src="69Ge.png" alt="Image 2" className="rounded-lg shadow transform transition-transform duration-300 hover:scale-105 cursor-pointer max-h-72 object-contain" />
@@ -385,7 +385,7 @@ export default function Portfolio() {
         {[
           {
             authors:
-              "A. Trigilio, L. Sabbatini, A. Alexandrov, B. Alpat, G. Ambrosi, S. Argirò, <strong>Bharat Kharpuse</strong>, ...",
+              "A. Trigilio, L. Sabbatini, A. Alexandrov, B. Alpat, G. Ambrosi, S. Argirò, <strong>Achyut Tiwari</strong>, ...",
             title:
               "Characterization of a permanent magnetic dipolar system for the FOOT experiment",
             link: "https://iopscience.iop.org/article/10.1088/1748-0221/20/09/T09010",
@@ -429,7 +429,7 @@ export default function Portfolio() {
       <ol className="list-decimal list-outside pl-6 space-y-6 text-slate-700">
         {[
           {
-            authors: "<strong>Bharat Kharpuse</strong> and Moumita Maiti",
+            authors: "<strong>Achyut Tiwari</strong> and Moumita Maiti",
             title:
               "Analysis of residual cross section from 11B-induced reaction on Zr",
             link: "https://inspirehep.net/literature/2877428",
@@ -442,26 +442,26 @@ export default function Portfolio() {
             journal: "DAE Symp. Nucl. Phys. 68 (2025) 401–402",
           },
           {
-            authors: "<strong>Bharat Kharpuse</strong> et al.",
+            authors: "<strong>Achyut Tiwari</strong> et al.",
             title: "In-beam γ-ray spectroscopy of 69Ge",
             link: "https://inspirehep.net/files/f4641f4fd6aeb3f8e24a72537413a0c5",
             journal: "DAE Symp. Nucl. Phys. 67 (2024) 99–100",
           },
           {
-            authors: "Sramana Biswas, <strong>Bharat Kharpuse</strong> et al.",
+            authors: "Sramana Biswas, <strong>Achyut Tiwari</strong> et al.",
             title:
               "Yield distribution of fusion evaporation reaction 28Si + 48Ti",
             link: "https://inspirehep.net/files/7ea5acd798e644d724b427da46ae0ead",
             journal: "DAE Symp. Nucl. Phys. 67 (2024) 201–202",
           },
           {
-            authors: "A. Basak, <strong>Bharat Kharpuse</strong> et al.",
+            authors: "A. Basak, <strong>Achyut Tiwari</strong> et al.",
             title: "Coexisting Features in 68Zn",
             link: "https://inspirehep.net/files/c187de064ddf8cd540b7c80dae7f613e",
             journal: "DAE Symp. Nucl. Phys. 66 (2023) 121–122",
           },
           {
-            authors: "A.K. Mondal, <strong>Bharat Kharpuse</strong> et al.",
+            authors: "A.K. Mandal, <strong>Achyut Tiwari</strong> et al.",
             title: "Low-lying level sequences in 76As",
             link: "https://inspirehep.net/files/c20ac04331f57b46e0c9ccd001f724b2",
             journal: "DAE Symp. Nucl. Phys. 65 (2022) 77–78",
@@ -662,7 +662,7 @@ export default function Portfolio() {
               {[
                 {
                   id: "inga-vecc-1",
-                  src: "bharat_vecc.jpg",
+                  src: "achyut_research_archive.jpg",
                   alt: "INGA campaign VECC Kolkata",
                   caption: "During INGA campaign, VECC Kolkata",
                 },
@@ -716,16 +716,16 @@ export default function Portfolio() {
             I’m open to collaboration and discussion – feel free to reach out!
           </p>
           <div className="flex justify-center gap-6 text-slate-700">
-            <a href="mailto:bharatkharpuse@gmail.com" className="hover:text-sky-600">
+            <a href="mailto:achyut.tiwari@pi1.uni-stuttgart.de" className="hover:text-sky-600">
               <Mail size={28} />
             </a>
-            <a href="https://www.linkedin.com/in/bharat-kharpuse-369728161/" target="_blank" rel="noreferrer" className="hover:text-sky-600">
+            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="hover:text-sky-600">
               <Linkedin size={28} />
             </a>
-            <a href="https://www.researchgate.net/profile/Bharat_Kharpuse2?ev=hdr_xprf" target="_blank" rel="noreferrer" className="hover:text-sky-600">
+            <a href="https://scholar.google.com/scholar?q=Achyut+Tiwari+ellipsometry" target="_blank" rel="noreferrer" className="hover:text-sky-600">
               <Github size={28} />
             </a>
-            <a href="Bharat_CVU.pdf" target="_blank" rel="noreferrer" className="hover:text-sky-600 flex items-center">
+            <a href="Achyut_Tiwari_CV.pdf" target="_blank" rel="noreferrer" className="hover:text-sky-600 flex items-center">
               <File size={28} />
             </a>
           </div>
@@ -733,7 +733,7 @@ export default function Portfolio() {
       </section>
 
       <footer className="py-6 text-center text-sm text-slate-500 bg-white">
-        © {new Date().getFullYear()} Bharat Kharpuse – Bharat Kharpuse
+        © {new Date().getFullYear()} Achyut Tiwari – Achyut Tiwari
       </footer>
     </main>
     </>

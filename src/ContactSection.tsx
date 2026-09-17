@@ -9,7 +9,7 @@ export default function ContactSection() {
   const sendEmail = (e: any) => {
     e.preventDefault();
     emailjs
-      .sendForm("service_ucn12pn", "template_xw53ylp", form.current!, "bharatkharpuse@gmail.com")
+      .sendForm("service_ucn12pn", "template_xw53ylp", form.current!, "achyut.tiwari@pi1.uni-stuttgart.de")
       .then(() => alert("Message sent successfully!"))
       .catch((err) => alert("Failed to send message: " + err.text));
     e.target.reset();
@@ -65,20 +65,20 @@ export default function ContactSection() {
       {/* Social Footer */}
       <div className="mt-12 text-center space-y-4">
         <div className="flex justify-center gap-6 text-slate-700">
-          <a href="mailto:bharatkharpuse@gmail.com" className="hover:text-sky-600">
+          <a href="mailto:achyut.tiwari@pi1.uni-stuttgart.de" className="hover:text-sky-600">
             <Mail size={28} />
           </a>
-          <a href="https://www.linkedin.com/in/bharat-kharpuse-369728161/" target="_blank" rel="noreferrer" className="hover:text-sky-600">
+          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="hover:text-sky-600">
             <Linkedin size={28} />
           </a>
-          <a href="https://www.researchgate.net/profile/Bharat_Kharpuse2?ev=hdr_xprf" target="_blank" rel="noreferrer" className="hover:text-sky-600">
+          <a href="https://scholar.google.com/scholar?q=Achyut+Tiwari+ellipsometry" target="_blank" rel="noreferrer" className="hover:text-sky-600">
             <Github size={28} />
           </a>
-          <a href="Bharat_CVU.pdf" target="_blank" rel="noreferrer" className="hover:text-sky-600 flex items-center">
+          <a href="mailto:achyut.tiwari@pi1.uni-stuttgart.de" className="hover:text-sky-600 flex items-center">
             <File size={28} />
           </a>
         </div>
-        <p className="text-sm text-slate-500">© {new Date().getFullYear()} Bharat Kharpuse</p>
+        <p className="text-sm text-slate-500">© {new Date().getFullYear()} Achyut Tiwari</p>
       </div>
     </section>
   );

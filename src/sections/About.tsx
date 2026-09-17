@@ -1,86 +1,126 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { GraduationCap } from "lucide-react";
 import SectionFooter from "./SectionFooter";
+
+const logo = (filename: string) => `${import.meta.env.BASE_URL}${encodeURI(filename)}`;
 
 const About: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavigate }) => {
   const achievements = [
-    { title: "MAECI Grande (2024)", description: "Grant for the project 'Measuring Oxygen Fragmentation at GSI For Improved Ion Therapy Strategies'", logo: "MAECI.png" },
-    { title: "MP-SET (2024)", description: "Qualified Madhya Pradesh State Eligibility Test, qualification for Assistant Professor exam.", logo: "MPSET.png" },
-    { title: "M-SET (2023)", description: "Qualified Maharashtra State Eligibility Test, qualification for Assistant Professor exam.", logo: "MHSET.jpeg" },
-    { title: "GATE (2022 & 2023)", description: "Qualified GATE conducted by IIT.", logo: "gate-logo.jpg" },
-    { title: "IIT-JAM (2019)", description: "Qualified the Joint Admission Test for Master of Science.", logo: "JAM.jpeg" },
-    { title: "NGPE (2019)", description: "Among the 1% state topper in the National Graduate Physics Examination conducted by IAPT.", logo: "NGPE.png" },
-    { title: "NMMS (2012)", description: "National Means-cum-Merit Scholarship, recognition of outstanding academic performance in secondary school.", logo: "NMMS.jpeg" },
+    { title: "CSIR-NET (JRF), 2022", description: "Qualified the national examination for Junior Research Fellowship and Assistant Professor eligibility.", logo: logo("CSIR.png") },
+    { title: "Junior Research Fellowship, IIT Delhi", description: "Institute fellowship awarded by IIT Delhi for doctoral-track research.", logo: logo("IITD.png") },
+    { title: "IIT-JAM Qualified, 2019", description: "Qualified the Joint Admission Test for M.Sc. for admission to IIT (ISM) Dhanbad.", logo: logo("JAM.jpeg") },
+    { title: "INSPIRE Scholarship, 2016–2021", description: "Merit-based Department of Science & Technology scholarship held throughout BSc–MSc.", logo: logo("INSPIRE.png") },
+    { title: "NGPE State Topper, 2019", description: "State top rank in Madhya Pradesh in the National Graduate Physics Examination.", logo: logo("NGPE.png") },
   ];
 
-  const education = [
-    { period: "Apr-2025 – Present", degree: "Post Graduate Grant", place: "INFN-Torino, Italy" },
-    { period: "Jan-2024 – Mar-2025", degree: "Junior Research Fellow", place: "IIT-Roorkee, India" },
-    { period: "Sep-2022 – Jan-2024", degree: "Junior Research Fellow", place: "Visva-Bharati, Santiniketan, India" },
-    { period: "2019 – 2021", degree: "MSc (Physics)", place: "Indian Institute of Engineering Science and Technology, Shibpur, WB, India" },
-    { period: "2016 – 2019", degree: "BSc (PCM)", place: "Govt. Nirbhaya Singh Patel Science College, Indore (affiliated to DAVV University, Indore)" },
+  const timeline = [
+    { period: "Jun 2026 – Present", title: "Postdoctoral Researcher", place: "1. Physikalisches Institut, Universität Stuttgart, Germany", logo: logo("UniStuttgart.jpeg") },
+    { period: "2022 – May 2026", title: "Doctoral Researcher · PhD in Physics", place: "1. Physikalisches Institut, Universität Stuttgart · Advisor: Prof. Dr. Martin Dressel", logo: logo("UniStuttgart.jpeg") },
+    { period: "2021 – 2022", title: "Junior Research Fellow", place: "IIT Delhi, India", logo: logo("IITD.png") },
+    { period: "2019 – 2021", title: "MSc in Physics", place: "IIT (ISM) Dhanbad, India", logo: logo("IITISM.jpeg") },
+    { period: "2018 – 2019", title: "Project Intern", place: "UGC-DAE Consortium for Scientific Research (CSR), Indore, India", logo: logo("DAE.png") },
+    { period: "2016 – 2019", title: "BSc in Physics", place: "Devi Ahilya University, India", logo: null },
   ];
 
-  const experience = [
+  const skillGroups = [
     {
-      title: "Junior Research Fellow (Jan/2024 - Mar/2025)",
-      detail: "Study of the fusion reaction dynamics using 11B projectile on Zr target. Supervisor: Dr. Moumita Maiti, IIT-Roorkee, UK",
+      title: "Optical spectroscopy",
+      items: ["Polarization-resolved spectroscopy", "Broadband FTIR", "Mueller-matrix ellipsometry", "Effective medium theory"],
     },
     {
-      title: "Junior Research Fellow (Sep/2022 - Jan/2024)",
-      detail: "Nuclear structure study at A~70 mass region using gamma-ray spectroscopy. Supervisor: Dr. Budhhadev Mukherjee, Visva-Bharati, Santiniketan, WB",
+      title: "Materials",
+      items: ["Van der Waals & correlated materials", "Charge-density-wave systems", "Organic conductors", "Transition-metal oxides", "Thin films"],
     },
     {
-      title: "Master Thesis (Jan/2020 - Mar/2021)",
-      detail: "Nuclear structure study using Shell Model Calculation. Supervisor: Dr. Sukhendu Sekhar Sarkar, IIEST-Shibpur, WB",
+      title: "Tools",
+      items: ["MATLAB", "Python", "RefFIT", "OriginPro", "LaTeX", "Inkscape", "Blender"],
     },
   ];
 
   return (
     <div className="w-full flex flex-col bg-[#f7f8f5]">
-      <div className="mx-auto flex w-full max-w-[1200px] flex-1 flex-col gap-12 px-4 py-20 text-slate-900 sm:px-6 lg:px-8">
-        <div className="w-full max-w-[62rem]">
+      <div className="mx-auto flex w-full max-w-[1200px] flex-1 flex-col gap-16 px-4 py-20 text-slate-900 sm:px-6 lg:px-8">
+        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="grid w-full gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-14">
+          <div>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-700">The person behind the work</p>
-            <h2 className="mt-3 max-w-[42rem] text-4xl font-bold tracking-[-0.04em] sm:text-5xl lg:text-[3.5rem] lg:leading-[1.02]">A physicist building a practical path from nuclei to patients.</h2>
-            <p className="mt-6 max-w-[52rem] text-base leading-8 text-slate-700 sm:text-lg">
-              I'm passionate about applying nuclear physics to medical challenges, particularly in radiation therapy and space radioprotection. At INFN Torino, I contribute to the FOOT experiment, focusing on BGO calorimeter response and neutron detection techniques crucial for understanding secondary fragments from therapeutic beams.
-            </p>
-            <p className="mt-5 max-w-[52rem] text-base leading-8 text-slate-700 sm:text-lg">
-              Previously, I worked on gamma-ray spectroscopy and fusion–evaporation studies, gaining hands-on experience with gamma radiation and detector systems.
+            <h2 className="mt-3 max-w-[38rem] text-4xl font-bold leading-[1.06] tracking-[-0.045em] sm:text-5xl lg:text-[3.25rem] lg:leading-[1.04]">An experimental physicist studying how quantum materials interacts with light.</h2>
+            <p className="mt-6 max-w-[38rem] text-base leading-8 text-slate-700 sm:text-lg">
+              I am an experimental condensed-matter physicist. I use polarization-resolved infrared and optical spectroscopy, together with Mueller-matrix ellipsometry, to study how correlated and layered quantum materials respond to light at low temperatures. Combining careful cryogenic measurements with quantitative modeling, I follow how the electrons reorganize across metal–insulator, charge-order, and magnetic transitions, and what that reveals about anisotropic charge dynamics and interlayer coupling.
             </p>
           </div>
+          <div className="flex justify-center lg:justify-end">
+            <img
+              src={`${import.meta.env.BASE_URL}about.JPG`}
+              alt="Achyut Tiwari working at an optical spectroscopy and cryostat setup"
+              className="aspect-[4/3] w-full max-w-md rounded-2xl border border-slate-200 bg-slate-100 object-cover shadow-lg"
+            />
+          </div>
+        </motion.div>
 
         <div>
-          <h3 className="mb-6 text-3xl font-bold">Education & experience</h3>
+          <h3 className="mb-8 text-3xl font-bold">Education &amp; experience</h3>
           <div className="relative ml-2 border-l-2 border-cyan-200 pl-7">
-            {[...education.map((item) => ({ period: item.period, title: item.degree, place: item.place }))].map((item, index) => (
-              <motion.div key={`${item.title}-${index}`} initial={{ opacity: 0, x: -12 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative mb-7 last:mb-0">
+            {timeline.map((item, index) => (
+              <motion.div key={`${item.title}-${index}`} initial={{ opacity: 0, x: -12 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.05 }} className="relative mb-8 flex items-start gap-4 last:mb-0">
                 <span className="absolute -left-[2.15rem] top-1.5 h-3 w-3 rounded-full border-2 border-[#f7f8f5] bg-cyan-500" />
-                <p className="text-sm font-semibold text-cyan-700">{item.period}</p>
-                <h4 className="mt-1 text-lg font-semibold">{item.title}</h4>
-                <p className="mt-1 leading-6 text-slate-600">{item.place}</p>
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white">
+                  {item.logo ? (
+                    <img src={item.logo} alt="" className="h-full w-full object-contain p-1" />
+                  ) : (
+                    <GraduationCap size={20} strokeWidth={2} className="text-cyan-700" />
+                  )}
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-cyan-700">{item.period}</p>
+                  <h4 className="mt-1 text-lg font-semibold">{item.title}</h4>
+                  <p className="mt-1 leading-6 text-slate-600">{item.place}</p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
 
         <div>
-          <h3 className="mb-6 text-3xl font-bold">Selected qualifications</h3>
+          <h3 className="mb-8 text-3xl font-bold">Selected qualifications</h3>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {achievements.map((item) => <div key={item.title} className="flex items-center gap-4 border-b border-slate-200 py-3"><img src={item.logo} alt="" className="h-10 w-10 object-contain" /><div><h4 className="font-semibold">{item.title}</h4><p className="text-sm text-slate-600">{item.description}</p></div></div>)}
+            {achievements.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="flex items-start gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+              >
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white">
+                  <img src={item.logo} alt="" className="h-full w-full object-contain p-1" />
+                </span>
+                <div>
+                  <h4 className="font-semibold">{item.title}</h4>
+                  <p className="mt-1 text-sm leading-6 text-slate-600">{item.description}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
 
         <div>
-          <h3 className="text-3xl font-bold mb-6">Skills & Expertise</h3>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <ul className="list-disc list-inside space-y-2">
-              <li><strong>Instruments:</strong> INGA (HPGe detector array), SCA, MCA</li>
-            </ul>
-            <ul className="list-disc list-inside space-y-2">
-              <li><strong>Software:</strong> NUSHELLX, KSHELL</li>
-              <li><strong>Analysis Tools:</strong> CERN-ROOT, Python, GENIEE-2K, RADWARE, INGASHORT</li>
-            </ul>
+          <h3 className="mb-8 text-3xl font-bold">Skills &amp; expertise</h3>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {skillGroups.map((group) => (
+              <div key={group.title} className="rounded-xl border border-slate-200 bg-white p-5">
+                <h4 className="text-sm font-semibold uppercase tracking-[0.1em] text-cyan-700">{group.title}</h4>
+                <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
+                  {group.items.map((skill) => (
+                    <li key={skill} className="flex items-start gap-2">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400" />
+                      {skill}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </div>

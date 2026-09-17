@@ -10,7 +10,7 @@ const Contact: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavigate }
     const form = new FormData(event.currentTarget);
     const subject = encodeURIComponent(String(form.get("subject") || "Website enquiry"));
     const body = encodeURIComponent(`Name: ${form.get("name")}\nEmail: ${form.get("email")}\n\n${form.get("message")}`);
-    window.location.href = `mailto:bharatkharpuse@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:achyut.tiwari@pi1.uni-stuttgart.de?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -21,7 +21,7 @@ const Contact: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavigate }
         </motion.h2>
 
         <p className="text-lg text-slate-600">
-          I’m open to collaboration and discussion – feel free to reach out!
+          I’m open to collaboration and discussion in experimental condensed-matter physics.
         </p>
 
           {/* layout row: map on left, form on right */}
@@ -102,15 +102,15 @@ const Contact: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavigate }
           </div>
 
         <div className="flex justify-center gap-6 text-slate-700">
-          <a href="mailto:bharatkharpuse@gmail.com" className="hover:text-sky-600"><Mail size={28} /></a>
-          <a href="https://www.linkedin.com/in/bharat-kharpuse-369728161/" target="_blank" rel="noreferrer" className="hover:text-sky-600"><Linkedin size={28} /></a>
+          <a href="mailto:achyut.tiwari@pi1.uni-stuttgart.de" className="hover:text-sky-600"><Mail size={28} /></a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="hover:text-sky-600"><Linkedin size={28} /></a>
           <a href="https://scholar.google.com/citations?user=ps7Jb1MAAAAJ&hl=en" target="_blank" rel="noreferrer" className="hover:text-sky-600">
             {/* Google Scholar logo */}
             <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-5H9l3-3 3 3h-2v5h-2zm1-12.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"/>
             </svg>
           </a>
-          <a href="Bharat_CVU.pdf" target="_blank" rel="noreferrer" className="hover:text-sky-600 flex items-center"><File size={28} /></a>
+          <a href="tel:+4915143400304" className="hover:text-sky-600 flex items-center"><File size={28} /></a>
         </div>
       </div>
       <SectionFooter sectionId="Contact" onNavigate={onNavigate} />

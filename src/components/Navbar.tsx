@@ -22,7 +22,7 @@ const Navbar: React.FC<NavbarProps> = ({ active, onNavigate }) => {
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between h-full px-4">
         <div>
-          <span className="text-xl font-bold text-black block leading-tight">Bharat Kharpuse</span>
+          <span className="text-xl font-bold text-black block leading-tight">Achyut Tiwari</span>
           <span className="text-sm text-slate-700">Research Fellow</span>
         </div>
 

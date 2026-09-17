@@ -39,7 +39,7 @@ You can add HTML tags for formatting:
 {
   "publications": [
     {
-      "authors": "<strong>Bharat Kharpuse</strong>, Himanshu Sharma and Moumita Maiti",
+      "authors": "<strong>Achyut Tiwari</strong>, Himanshu Sharma and Moumita Maiti",
       "title": "Cross section measurement of residues from 11B reactions on Zr: Production of 97Ru",
       "link": "https://link.springer.com/article/10.1140/epjp/s13360-025-07171-6",
       "journal": "European Physical Journal Plus 140 (2025) 1231"

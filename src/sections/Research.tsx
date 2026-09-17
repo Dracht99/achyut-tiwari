@@ -172,17 +172,9 @@ const Research: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavigate 
         </div>
       </div>
 
-      <div className="mt-20 flex flex-col items-start justify-between gap-4 border-t border-slate-200 pt-8 sm:flex-row sm:items-center">
+      <div className="mt-20 border-t border-slate-200 pt-8">
         <a href="#Publications" onClick={() => onNavigate?.("Publications")} className="inline-flex items-center gap-2 text-base font-medium text-slate-700 hover:text-cyan-600">
           See all publications <span aria-hidden="true">→</span>
-        </a>
-        <a
-          href={`${import.meta.env.BASE_URL}cv.pdf`}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center justify-center rounded-lg bg-cyan-400 px-4 py-2.5 text-sm font-semibold text-slate-950 shadow-[0_0_20px_rgba(34,211,238,0.22)] transition-colors hover:bg-cyan-300"
-        >
-          Download CV
         </a>
       </div>
     </div>

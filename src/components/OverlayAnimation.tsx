@@ -26,9 +26,15 @@ export default function OverlayAnimation({
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   useEffect(() => {
+    // Phones show the photo letterboxed rather than full-bleed, so hold it longer.
+    const isPhone =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(max-width: 639px)").matches;
+
     const timer = setTimeout(() => {
       if (dismissible) setVisible(false);
-    }, visibleMs);
+    }, isPhone ? 5000 : visibleMs);
     return () => clearTimeout(timer);
   }, [dismissible, visibleMs]);
 
@@ -55,7 +61,7 @@ export default function OverlayAnimation({
           <motion.img
             src={`${import.meta.env.BASE_URL}pic_lab.JPG`}
             alt="Achyut Tiwari in the laboratory"
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-contain sm:object-cover"
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}

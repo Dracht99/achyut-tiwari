@@ -14,8 +14,41 @@ import Blog from "@/sections/Blog";
 const NAV_ITEMS = ["Home", "Research", "Publications", "About", "Gallery", "Blog"] as const;
 type SectionId = (typeof NAV_ITEMS)[number];
 
+declare global {
+  interface Window {
+    goatcounter?: {
+      count: (options: { path: string; title?: string; event?: boolean }) => void;
+    };
+  }
+}
+
+const trackSectionView = (section: SectionId) => {
+  const path = `/${section.toLowerCase()}`;
+  const title = `Achyut Tiwari — ${section}`;
+
+  const fire = () => {
+    if (window.goatcounter && typeof window.goatcounter.count === "function") {
+      window.goatcounter.count({ path, title, event: false });
+      return true;
+    }
+    return false;
+  };
+
+  // The GoatCounter script loads async, so it may not be ready yet on first mount; retry briefly.
+  if (fire()) return;
+  let attempts = 0;
+  const interval = window.setInterval(() => {
+    attempts += 1;
+    if (fire() || attempts > 10) window.clearInterval(interval);
+  }, 200);
+};
+
 const Portfolio: React.FC = () => {
   const [active, setActive] = useState<SectionId>("Home");
+
+  useEffect(() => {
+    trackSectionView(active);
+  }, [active]);
 
   const navigateTo = (id: SectionId) => {
     setActive(id);

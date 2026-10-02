@@ -69,7 +69,7 @@ const Publications: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavig
       journal: "J. Phys.: Condens. Matter 33, 235501 (2021)",
     },
     {
-      authors: "R. M. Roy, B. Tai, M. Wenzel, <strong>A. Tiwari</strong>, M. Ozerov, C. Shekhar, C. Felser, A. V. Pronin, X. Feng, M. Dress",
+      authors: "R. M. Roy, B. Tai, M. Wenzel, <strong>A. Tiwari</strong>, M. Ozerov, C. Shekhar, C. Felser, A. V. Pronin, X. Feng, M. Dressel",
       title: "Electronic correlations shape the low-energy optical response of the kagome antiferromagnets Mn<sub>3</sub>Sn and Mn<sub>3</sub>Ge",
       link: "https://doi.org/10.48550/arXiv.2609.18744",
       journal: "arXiv.2609.18744 (2026) (Under review)",

@@ -8,9 +8,11 @@ const logo = (filename: string) => `${import.meta.env.BASE_URL}${encodeURI(filen
 const About: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavigate }) => {
   const achievements = [
     { title: "CSIR-NET (JRF), 2022", description: "Qualified the national examination for Junior Research Fellowship and Assistant Professor eligibility.", logo: logo("CSIR.png") },
-    { title: "Junior Research Fellowship, IIT Delhi", description: "Institute fellowship awarded by IIT Delhi for doctoral-track research.", logo: logo("IITD.png") },
-    { title: "IIT-JAM Qualified, 2019", description: "Qualified the Joint Admission Test for M.Sc. for admission to IIT (ISM) Dhanbad.", logo: logo("JAM.jpeg") },
+    { title: "Junior Research Fellowship, IIT Delhi", description: "Institute fellowship awarded by IIT Delhi.", logo: logo("IITD.png") },
     { title: "INSPIRE Scholarship, 2016–2021", description: "Merit-based Department of Science & Technology scholarship held throughout BSc–MSc.", logo: logo("INSPIRE.png") },
+    { title: "IIT-JAM Qualified, 2019", description: "Qualified the Joint Admission Test for M.Sc. for admission to IIT (ISM) Dhanbad.", logo: logo("JAM.jpeg") },
+    { title: "GATE, 2021 & 2022", description: "Qualified the Graduate Aptitude Test in Engineering, conducted by IISc and the IITs for postgraduate admissions and government research assistantships.", logo: logo("GATElogo.png") },
+    { title: "JEST Qualified, 2022", description: "Qualified the Joint Entrance Screening Test, the national screening test for PhD admission in physics at India's leading research institutes.", logo: logo("JEST logo.jpg") },
     { title: "NGPE State Topper, 2019", description: "State top rank in Madhya Pradesh in the National Graduate Physics Examination.", logo: logo("NGPE.png") },
   ];
 
@@ -26,25 +28,27 @@ const About: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavigate }) 
   const skillGroups = [
     {
       title: "Optical spectroscopy",
-      items: ["Polarization-resolved spectroscopy", "Broadband FTIR", "Mueller-matrix ellipsometry", "Effective medium theory"],
+      items: ["Polarization-resolved spectroscopy", "Mueller-matrix ellipsometry", "FTIR spectroscopy", "Low-temperature measurements", "Effective medium theory"],
+    },
+    {
+      title: "Thin-film growth & characterization",
+      items: ["Pulsed laser deposition (PLD)", "Cleanroom experience", "X-ray diffraction (XRD)", "Resistivity measurements", "Magnetization measurements"],
     },
     {
       title: "Materials",
       items: ["Van der Waals & correlated materials", "Charge-density-wave systems", "Organic conductors", "Transition-metal oxides", "Thin films"],
     },
-    {
-      title: "Tools",
-      items: ["MATLAB", "Python", "RefFIT", "OriginPro", "LaTeX", "Inkscape", "Blender"],
-    },
   ];
+
+  const tools = ["CompleteEASE", "MATLAB", "Python", "RefFIT", "OriginPro", "LaTeX", "Inkscape", "Blender"];
 
   return (
     <div className="w-full flex flex-col bg-[#f7f8f5]">
       <div className="mx-auto flex w-full max-w-[1200px] flex-1 flex-col gap-16 px-4 py-20 text-slate-900 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="grid w-full gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-14">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-700">The person behind the work</p>
-            <h2 className="mt-3 max-w-[38rem] text-4xl font-bold leading-[1.06] tracking-[-0.045em] sm:text-5xl lg:text-[3.25rem] lg:leading-[1.04]">An experimental physicist studying how quantum materials interacts with light.</h2>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-700"></p>
+            <h2 className="mt-3 max-w-[38rem] text-3xl font-bold leading-[1.06] tracking-[-0.045em] sm:text-4xl lg:text-[2.75rem] lg:leading-[1.04]">An experimental physicist studying how quantum materials interacts with light.</h2>
             <p className="mt-6 max-w-[38rem] text-base leading-8 text-slate-700 sm:text-lg">
               I am an experimental condensed-matter physicist. I use polarization-resolved infrared and optical spectroscopy, together with Mueller-matrix ellipsometry, to study how correlated and layered quantum materials respond to light at low temperatures. Combining careful cryogenic measurements with quantitative modeling, I follow how the electrons reorganize across metal–insulator, charge-order, and magnetic transitions, and what that reveals about anisotropic charge dynamics and interlayer coupling.
             </p>
@@ -82,7 +86,7 @@ const About: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavigate }) 
         </div>
 
         <div>
-          <h3 className="mb-8 text-3xl font-bold">Selected qualifications</h3>
+          <h3 className="mb-8 text-3xl font-bold">Awards &amp; qualifications</h3>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {achievements.map((item, index) => (
               <motion.div
@@ -94,7 +98,11 @@ const About: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavigate }) 
                 className="flex items-start gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
               >
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white">
-                  <img src={item.logo} alt="" className="h-full w-full object-contain p-1" />
+                  {item.logo ? (
+                    <img src={item.logo} alt="" className="h-full w-full object-contain p-1" />
+                  ) : (
+                    <GraduationCap size={18} strokeWidth={2} className="text-cyan-700" />
+                  )}
                 </span>
                 <div>
                   <h4 className="font-semibold">{item.title}</h4>
@@ -121,6 +129,17 @@ const About: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavigate }) 
                 </ul>
               </div>
             ))}
+            <div className="rounded-xl border border-slate-200 bg-white p-5">
+              <h4 className="text-sm font-semibold uppercase tracking-[0.1em] text-cyan-700">Tools</h4>
+              <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-sm leading-6 text-slate-700">
+                {tools.map((tool) => (
+                  <li key={tool} className="flex items-start gap-2">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400" />
+                    {tool}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

@@ -34,7 +34,7 @@ export default function OverlayAnimation({
 
     const timer = setTimeout(() => {
       if (dismissible) setVisible(false);
-    }, isPhone ? 5000 : visibleMs);
+    }, isPhone ? 3500 : visibleMs);
     return () => clearTimeout(timer);
   }, [dismissible, visibleMs]);
 
@@ -81,32 +81,32 @@ export default function OverlayAnimation({
           />
 
           <div className="relative z-10 flex flex-col items-center text-center">
-            <motion.div
-              className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.32em] text-cyan-200/90 backdrop-blur-sm"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
-              Experimental Condensed-Matter Physicist
-            </motion.div>
-
             <motion.h1
               className="relative z-10 mb-3 bg-gradient-to-r from-cyan-200 via-white to-sky-400 bg-clip-text text-4xl font-black tracking-[-0.06em] text-transparent md:text-6xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+              transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
             >
               {name}
             </motion.h1>
 
             <motion.p
-              className="mb-5 max-w-xl text-sm text-slate-200/85 md:text-lg"
+              className="mb-4 max-w-xl text-sm text-slate-200/85 md:text-lg"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.7, ease: "easeOut" }}
+              transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
             >
               1. Physikalisches Institut · Universität Stuttgart
             </motion.p>
+
+            <motion.div
+              className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.32em] text-cyan-200/90 backdrop-blur-sm"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+            >
+              Experimental Condensed-Matter Physicist
+            </motion.div>
 
             <motion.div
               className="relative h-[2px] w-32 overflow-hidden rounded-full bg-white/10"

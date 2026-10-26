@@ -1,0 +1,242 @@
+        function toast(body,type='')
+        {
+            if(type==""){type="danger";}
+            var toastHtml="";   
+            var headText="Error";
+            if(type!="danger"){headText="Success";}
+            toastHtml+='<div class="toast-container position-absolute top-0 end-0 p-3">';
+            toastHtml+='<div id="myToast" class="toast text-white bg-'+type+'" role="alert" aria-live="assertive" data-delay="1000" aria-atomic="true" data-autohide="true">';
+            toastHtml+='<div class="toast-header">';
+            toastHtml+='<strong class="me-auto">'+headText+'</strong>';
+            toastHtml+='<button type="button" class="btn-close" data-dismiss="toast" aria-label="Close">';
+            toastHtml+='</button></div>';
+            toastHtml+='<div class="toast-body">'+body+'</div>';
+            toastHtml+='</div></div>';
+            //$("body").append(toastHtml);
+
+            var elem = document.createElement('div');
+            elem.setAttribute("id", "popDiv");
+            document.body.appendChild(elem);
+
+            document.getElementById("popDiv").innerHTML=toastHtml;
+            const myToast = new bootstrap.Toast(document.getElementById('myToast'), {});
+            //const myToast = bootstrap.Toast.getInstance(document.getElementById('myToast'))
+            myToast.show();
+
+            //$('.toast').toast('show');
+        }
+        function alertBox(msgText,successAction,errorAction,btnType)
+        {
+            
+            var btn=[];
+            //var sAction=function(){$('#alertBox').modal('hide');}
+            var sAction=function()
+            {
+                var myModal = document.getElementById('alertBox');
+                if(myModal){
+                    var modal = bootstrap.Modal.getInstance(myModal);
+                    modal.hide();
+                }
+            };
+
+            if(btnType.toLowerCase()=="ok")
+            {
+                btn=[
+                        {"btnName":"OK","class":"outline-primary btntheme","action":successAction},
+                    ];
+            }
+            else if(btnType.toLowerCase()=="yesno")
+            {
+                btn=[
+                        {"btnName":"Yes","class":"outline-primary btntheme","action":successAction},
+                        {"btnName":"No","class":"outline-light","action":errorAction}
+                    ];
+            }
+            
+            var modalHtml="";
+            modalHtml+='<div class="modal fade" id="alertBox" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">';
+            modalHtml+='<div class="modal-dialog" role="document"><div class="modal-content">';
+            modalHtml+='<div class="modal-body">';
+            modalHtml+='<p class="mg-b-0">'+msgText+'</p>';
+            modalHtml+='</div>';
+            modalHtml+='<div class="modal-footer">';
+            for (var key in btn) {
+                if (btn.hasOwnProperty(key)) 
+                {
+                    modalHtml+='<button type="button" class="btn btn-xs btn-'+btn[key].class+'" onclick="('+ btn[key].action +'());('+sAction+'())">'+btn[key].btnName+'</button>';
+                }
+            } 
+            modalHtml+='</div></div></div></div>';
+            //$("body").append(modalHtml);
+            var elem = document.createElement('div');
+            elem.setAttribute("id", "popDiv");
+            document.body.appendChild(elem);
+
+            document.getElementById("popDiv").innerHTML=modalHtml;
+            const myModal = new bootstrap.Modal(document.getElementById('alertBox'), {});
+            myModal.show();
+        }
+        
+
+        function roundToX(num, X) {    
+            return +(Math.round(num + "e+"+X)  + "e-"+X);
+        }
+        
+
+        function isNumber(evt) 
+        {
+          evt = (evt) ? evt : window.event;
+          var charCode = (evt.which) ? evt.which : evt.keyCode;
+          if ((charCode > 31 && (charCode < 48 || charCode > 57))) 
+          {
+              if(charCode==46){}
+              else{
+                return false;
+              }
+          }
+          else
+          {
+            return true;
+          }
+          
+        }
+
+        function post_data(path, params, method='post',target="") {
+
+            // The rest of this code assumes you are not using a library.
+            // It can be made less verbose if you use one.
+            const form = document.createElement('form');
+            form.method = method;
+            form.action = path;
+            
+            for (const key in params) {
+              if (params.hasOwnProperty(key)) {
+                const hiddenField = document.createElement('input');
+                hiddenField.type = 'hidden';
+                hiddenField.name = key;
+                hiddenField.value = params[key];
+          
+                form.appendChild(hiddenField);
+              }
+            }
+            document.body.appendChild(form);
+            form.submit();
+        
+          }
+        function bindPrice(is_SAARC)
+        {
+              
+            $(".availoptions [id^='chk']").each(function()
+            {
+                let ctrl=$(this).attr("id")+"-pr";
+                let price=0;
+                if($(this).val()!="")
+                {
+                    if(is_SAARC)
+                    {
+                        price=amounts[$(this).val()].S;
+                        $(".cur").html("₹");
+                    }
+                    else{
+                        price=amounts[$(this).val()].N;
+                        $(".cur").html("$");
+                    }
+                    $("."+ctrl).html(price);
+                }
+            });
+        }
+          function calc()
+          {
+              let is_SAARC=false;
+              
+              $(".cur").html("$");
+              $("#curName").val("USD");
+              
+              let countryName=$("#country").val().toLowerCase();
+              if(countryName=="afghan" || countryName=="bangladeshi" || countryName=="bhutanese" || countryName=="indian" || countryName=="maldivan" || countryName=="nepalese" || countryName=="sri-lankan" || countryName=="pakistani")
+              {
+                  is_SAARC=true;
+                  $(".cur").html("₹");
+                  $("#curName").val("INR");
+              }
+              bindPrice(is_SAARC);
+              let amount=amounts[$("#joiningAs").val()];
+              
+              let amt=0;
+              let acVal=0;
+              let val=0;
+              
+              $(".availoptions [id^='chk']").each(function()
+              {
+                    if($(this).is(":checked"))
+                    {
+                        let qty=1;
+                        let price=0;
+                        if($(this).val()=="chkconf_dinner"){
+                            qty=parseInt($("#cdq").val());
+                        }
+                        if(is_SAARC)
+                        {
+                            price=(parseFloat(amounts[$(this).val()].S)*qty);;
+                        }
+                        else
+                        {
+                            price=(parseFloat(amounts[$(this).val()].N)*qty);
+                        }
+                        
+
+                        if($(this).val()=="chkconf_dinner"){
+                            $("#cdp").html(price);
+                        }
+                        amt+=price;
+                    }
+              });
+              
+              if(amount !== undefined)
+              {
+                  if(is_SAARC)
+                  {
+                      val=amount.S;
+                  }
+                  else
+                  {
+                      val=amount.N;   
+                  }
+              }
+              let tp=$("#txtTP").val();
+              if(tp == undefined){tp=0;}
+              
+              let totalVal=parseFloat(val)+parseFloat(amt)+parseFloat(tp);
+              totalVal=Math.round(totalVal);
+              let cnvFee=Math.round((totalVal*3)/100);
+              let payAmt=parseInt(totalVal)+parseInt(cnvFee);
+              //totalVal=totalVal.toFixed(2);
+
+            $("#joiningFee").val(totalVal);
+            //$("#cnvFee").val(cnvFee);
+            //$("#payableFee").val(payAmt);
+              
+          }
+          function allowText(t)
+        {
+            if(t=="char")
+            {var regexp = new RegExp(/^[a-zA-Z]*$/);}
+            if(t=="int")
+            {var regexp = new RegExp(/^[0-9]*$/);}
+            if(t=="float")
+            {
+                //var regexp = new RegExp(/^[+-]?\d+(\.\d+)?$/);
+                var regexp = new RegExp(/^[0-9]*(\.[0-9]{0,2})?$/);
+                
+            }
+            if (window.event) {keynum = window.event.keyCode;}
+            //else if (e.which) {keynum = e.which;}
+            var test =regexp.test(String.fromCharCode(keynum));
+            return test;
+        }
+        
+
+
+
+    
+        
